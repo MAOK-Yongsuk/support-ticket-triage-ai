@@ -1,0 +1,13 @@
+[project]
+name = "support-ticket-triage-ai"
+version = "0.1.0"
+description = "AI agent that triages incoming customer support tickets using Google ADK + FastAPI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk",
+    "litellm",
+    "fastapi",
+    "uvicorn[standard]",
+    "python-dotenv",
+]

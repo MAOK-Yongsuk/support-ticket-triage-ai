@@ -1,0 +1,131 @@
+"""Mock knowledge base articles for FAQ and documentation search."""
+
+KNOWLEDGE_BASE: list[dict] = [
+    # --- Billing & Payments ---
+    {
+        "id": "KB001",
+        "category": "billing",
+        "title": "Payment Failed During Plan Upgrade",
+        "content": (
+            "If your payment fails during a plan upgrade, please try the following: "
+            "1) Verify your card details are correct. "
+            "2) Ensure your bank is not blocking the transaction. "
+            "3) Try a different payment method. "
+            "If you see duplicate pending charges, they are authorization holds "
+            "and will be automatically released within 3-5 business days. "
+            "Contact support if charges are not released."
+        ),
+        "tags": ["payment", "billing", "upgrade", "failed", "charge", "duplicate"],
+    },
+    {
+        "id": "KB002",
+        "category": "billing",
+        "title": "Understanding Pending Charges and Refunds",
+        "content": (
+            "Pending charges are temporary authorization holds placed by your bank. "
+            "They are NOT actual charges. Authorization holds are released automatically "
+            "within 3-5 business days. If you need an immediate release, contact your "
+            "bank directly. For actual refunds of completed transactions, contact our "
+            "billing team and allow 5-10 business days for processing."
+        ),
+        "tags": ["pending", "charge", "refund", "authorization", "hold", "bank"],
+    },
+    {
+        "id": "KB003",
+        "category": "billing",
+        "title": "Plan Upgrade and Downgrade Guide",
+        "content": (
+            "To upgrade your plan: Go to Settings > Billing > Change Plan. "
+            "Select your desired plan and complete payment. Your new features "
+            "will be available immediately after successful payment. "
+            "To downgrade: The same path applies, but changes take effect "
+            "at the end of your current billing cycle."
+        ),
+        "tags": ["upgrade", "downgrade", "plan", "pro", "enterprise", "free"],
+    },
+    # --- System & Access ---
+    {
+        "id": "KB004",
+        "category": "system",
+        "title": "Error 500 - Internal Server Error Troubleshooting",
+        "content": (
+            "Error 500 indicates a server-side issue. Steps to try: "
+            "1) Clear browser cache and cookies. "
+            "2) Try a different browser. "
+            "3) Check status.company.com for known outages. "
+            "4) If the issue persists across multiple users, it may be a "
+            "regional outage. Contact support with your region information "
+            "and the number of affected users."
+        ),
+        "tags": ["error", "500", "server", "outage", "access", "down"],
+    },
+    {
+        "id": "KB005",
+        "category": "system",
+        "title": "Regional Service Status and Outage Information",
+        "content": (
+            "Our service operates across multiple regions: US, EU, and Asia. "
+            "Each region has independent infrastructure. Regional outages may "
+            "not appear on the global status page (status.company.com). "
+            "If you experience issues specific to your region, please contact "
+            "support with: your region, number of affected users, and error "
+            "messages. Enterprise customers receive priority incident response."
+        ),
+        "tags": ["region", "asia", "outage", "status", "infrastructure"],
+    },
+    {
+        "id": "KB006",
+        "category": "system",
+        "title": "Multi-User Access Troubleshooting",
+        "content": (
+            "If multiple users in your organization cannot access the system: "
+            "1) Check if the issue is network-specific (try mobile data). "
+            "2) Verify your organization's SSO/SAML configuration. "
+            "3) Check if your enterprise license seats are fully assigned. "
+            "4) Contact support for enterprise-level access issues — these "
+            "are treated as high-priority."
+        ),
+        "tags": ["access", "multi-user", "organization", "enterprise", "SSO"],
+    },
+    # --- UI & Features ---
+    {
+        "id": "KB007",
+        "category": "features",
+        "title": "Dark Mode Setup and Troubleshooting",
+        "content": (
+            "Dark mode is available on Pro and Enterprise plans. "
+            "To enable: Go to Settings > Appearance > Theme. "
+            "Options: Light, Dark, System Default. "
+            "Known issue: 'System Default' may not correctly detect OS dark "
+            "mode on all platforms. If 'System Default' doesn't work, "
+            "manually select 'Dark'. This is a known bug being tracked. "
+            "Scheduled dark mode (auto-switch) is not yet available but is "
+            "on our feature roadmap for Q3."
+        ),
+        "tags": ["dark mode", "theme", "appearance", "settings", "UI"],
+    },
+    {
+        "id": "KB008",
+        "category": "features",
+        "title": "Pro Plan Feature List",
+        "content": (
+            "Pro plan includes: Advanced export formats (PDF, XLSX, CSV), "
+            "Dark mode and custom themes, Priority email support, "
+            "API access (1000 requests/day), Team collaboration (up to 10 users), "
+            "Custom integrations. Upgrade at Settings > Billing > Change Plan."
+        ),
+        "tags": ["pro", "features", "export", "plan"],
+    },
+    {
+        "id": "KB009",
+        "category": "features",
+        "title": "Feature Requests and Roadmap",
+        "content": (
+            "We welcome feature requests! Submit them at feedback.company.com. "
+            "Our current roadmap includes: scheduled dark mode, mobile app "
+            "improvements, and enhanced API features. Feature requests are "
+            "reviewed monthly and prioritized by user demand."
+        ),
+        "tags": ["feature request", "roadmap", "feedback"],
+    },
+]
