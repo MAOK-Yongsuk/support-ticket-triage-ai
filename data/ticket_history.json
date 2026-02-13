@@ -1,0 +1,46 @@
+[
+    {
+        "ticket_id": "TK-2025-0042",
+        "customer_id": "CUST-002",
+        "date": "2025-09-15",
+        "subject": "SSO configuration help",
+        "issue_type": "configuration",
+        "product_area": "authentication",
+        "resolution": "Resolved — guided through SAML setup",
+        "resolution_time_hours": 2,
+        "satisfaction": "positive"
+    },
+    {
+        "ticket_id": "TK-2025-0138",
+        "customer_id": "CUST-004",
+        "date": "2025-11-20",
+        "subject": "Payment failed during upgrade",
+        "issue_type": "payment_failure",
+        "product_area": "billing",
+        "resolution": "Authorization hold released, upgrade completed",
+        "resolution_time_hours": 4,
+        "satisfaction": "neutral"
+    },
+    {
+        "ticket_id": "TK-2025-0201",
+        "customer_id": "CUST-005",
+        "date": "2025-12-10",
+        "subject": "Error 500 on dashboard",
+        "issue_type": "outage",
+        "product_area": "platform",
+        "resolution": "Regional cache issue fixed",
+        "resolution_time_hours": 1,
+        "satisfaction": "positive"
+    },
+    {
+        "ticket_id": "TK-2026-0015",
+        "customer_id": "CUST-006",
+        "date": "2026-01-05",
+        "subject": "Dark mode not working",
+        "issue_type": "bug",
+        "product_area": "ui",
+        "resolution": "Known bug — workaround provided, fix in Q3",
+        "resolution_time_hours": 0.5,
+        "satisfaction": "positive"
+    }
+]

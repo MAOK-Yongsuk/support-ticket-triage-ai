@@ -1,0 +1,29 @@
+{
+    "CUST-001": {
+        "customer_id": "CUST-001",
+        "health_score": 65,
+        "risk_level": "medium",
+        "recent_nps": 7,
+        "usage_trend": "stable",
+        "last_login_days_ago": 1,
+        "feature_adoption_pct": 45
+    },
+    "CUST-002": {
+        "customer_id": "CUST-002",
+        "health_score": 92,
+        "risk_level": "low",
+        "recent_nps": 9,
+        "usage_trend": "increasing",
+        "last_login_days_ago": 0,
+        "feature_adoption_pct": 85
+    },
+    "CUST-003": {
+        "customer_id": "CUST-003",
+        "health_score": 78,
+        "risk_level": "low",
+        "recent_nps": 8,
+        "usage_trend": "stable",
+        "last_login_days_ago": 0,
+        "feature_adoption_pct": 62
+    }
+}

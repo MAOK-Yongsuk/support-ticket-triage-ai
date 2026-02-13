@@ -2,7 +2,6 @@
 
 from pydantic import BaseModel, Field
 
-
 class ExtractedInfo(BaseModel):
     """Key information extracted from the support ticket."""
 
@@ -18,7 +17,6 @@ class ExtractedInfo(BaseModel):
     language: str = Field(
         description="Primary language of the messages (e.g., 'english', 'thai')"
     )
-
 
 class RecommendedAction(BaseModel):
     """Recommended triage action."""

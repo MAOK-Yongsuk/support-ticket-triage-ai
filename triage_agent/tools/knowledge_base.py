@@ -1,6 +1,12 @@
 """Tool: Search the knowledge base for relevant FAQ and documentation articles."""
 
-from data.knowledge_base import KNOWLEDGE_BASE
+import json
+from pathlib import Path
+
+# Load KB articles from JSON
+_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+with open(_DATA_DIR / "knowledge_base.json", encoding="utf-8") as f:
+    KNOWLEDGE_BASE = json.load(f)
 
 
 def search_knowledge_base(query: str) -> dict:

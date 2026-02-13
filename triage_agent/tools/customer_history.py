@@ -1,6 +1,12 @@
 """Tool: Look up customer history and profile information."""
 
-from data.customers import CUSTOMER_RECORDS
+import json
+from pathlib import Path
+
+# Load customer records from JSON
+_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+with open(_DATA_DIR / "customers.json", encoding="utf-8") as f:
+    CUSTOMER_RECORDS = json.load(f)
 
 
 def lookup_customer_history(customer_id: str) -> dict:

@@ -11,3 +11,8 @@ dependencies = [
     "uvicorn[standard]",
     "python-dotenv",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]

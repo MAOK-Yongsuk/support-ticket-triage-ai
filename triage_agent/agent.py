@@ -4,8 +4,16 @@ from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
 from triage_agent.prompts import TRIAGE_AGENT_INSTRUCTION
-from triage_agent.tools import search_knowledge_base, lookup_customer_history
-
+from triage_agent.tools import (
+    check_sla_status,
+    check_system_status,
+    get_agent_availability,
+    get_customer_health_score,
+    lookup_billing_transaction,
+    lookup_customer_history,
+    search_knowledge_base,
+    search_ticket_history,
+)
 
 root_agent = LlmAgent(
     model=LiteLlm(model="openai/gpt-4o"),
@@ -16,5 +24,17 @@ root_agent = LlmAgent(
         "knowledge base, and deciding the appropriate next action."
     ),
     instruction=TRIAGE_AGENT_INSTRUCTION,
-    tools=[search_knowledge_base, lookup_customer_history],
+    tools=[
+        # Core tools
+        search_knowledge_base,
+        lookup_customer_history,
+        # High-priority tools
+        check_sla_status,
+        search_ticket_history,
+        get_customer_health_score,
+        # Nice-to-have tools
+        check_system_status,
+        lookup_billing_transaction,
+        get_agent_availability,
+    ],
 )

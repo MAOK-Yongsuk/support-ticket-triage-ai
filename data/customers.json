@@ -1,6 +1,4 @@
-"""Mock customer records and ticket history."""
-
-CUSTOMER_RECORDS: dict[str, dict] = {
+{
     "CUST-001": {
         "customer_id": "CUST-001",
         "name": "Alice Johnson",
@@ -11,7 +9,7 @@ CUSTOMER_RECORDS: dict[str, dict] = {
         "seats": 1,
         "monthly_spend": 0.0,
         "previous_tickets": [],
-        "notes": "First time contacting support. Attempted upgrade to Pro.",
+        "notes": "First time contacting support. Attempted upgrade to Pro."
     },
     "CUST-002": {
         "customer_id": "CUST-002",
@@ -21,17 +19,17 @@ CUSTOMER_RECORDS: dict[str, dict] = {
         "region": "Thailand",
         "tenure_months": 8,
         "seats": 45,
-        "monthly_spend": 2250.00,
+        "monthly_spend": 2250.0,
         "previous_tickets": [
             {
                 "ticket_id": "TK-2025-0042",
                 "date": "2025-09-15",
                 "issue": "SSO configuration help",
                 "resolution": "Resolved — guided through SAML setup",
-                "satisfaction": "positive",
-            },
+                "satisfaction": "positive"
+            }
         ],
-        "notes": "Enterprise customer, Thailand region. High-value account. First critical issue.",
+        "notes": "Enterprise customer, Thailand region. High-value account. First critical issue."
     },
     "CUST-003": {
         "customer_id": "CUST-003",
@@ -43,6 +41,6 @@ CUSTOMER_RECORDS: dict[str, dict] = {
         "seats": 1,
         "monthly_spend": 29.99,
         "previous_tickets": [],
-        "notes": "Active daily user. No previous support tickets.",
-    },
+        "notes": "Active daily user. No previous support tickets."
+    }
 }

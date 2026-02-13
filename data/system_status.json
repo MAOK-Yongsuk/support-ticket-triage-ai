@@ -1,0 +1,32 @@
+{
+    "global": {
+        "status": "operational",
+        "last_updated": "2026-02-13T17:00:00Z"
+    },
+    "regions": {
+        "US": {
+            "status": "operational",
+            "incidents": []
+        },
+        "EU": {
+            "status": "operational",
+            "incidents": []
+        },
+        "Thailand": {
+            "status": "degraded",
+            "incidents": [
+                {
+                    "id": "INC-2026-0213",
+                    "title": "Intermittent 500 errors in Asia region",
+                    "severity": "high",
+                    "started_at": "2026-02-13T15:00:00Z",
+                    "affected_services": [
+                        "web_app",
+                        "api"
+                    ],
+                    "status": "investigating"
+                }
+            ]
+        }
+    }
+}

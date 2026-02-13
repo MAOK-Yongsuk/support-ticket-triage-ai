@@ -1,0 +1,26 @@
+{
+    "CUST-001": {
+        "customer_id": "CUST-001",
+        "sla_tier": "free_72h",
+        "response_time_hours": 72,
+        "ticket_opened_at": "2026-02-13T11:00:00Z",
+        "time_remaining_hours": 69,
+        "is_at_risk": false
+    },
+    "CUST-002": {
+        "customer_id": "CUST-002",
+        "sla_tier": "enterprise_4h",
+        "response_time_hours": 4,
+        "ticket_opened_at": "2026-02-13T13:00:00Z",
+        "time_remaining_hours": 2,
+        "is_at_risk": true
+    },
+    "CUST-003": {
+        "customer_id": "CUST-003",
+        "sla_tier": "pro_24h",
+        "response_time_hours": 24,
+        "ticket_opened_at": "2026-02-11T10:00:00Z",
+        "time_remaining_hours": 21,
+        "is_at_risk": false
+    }
+}

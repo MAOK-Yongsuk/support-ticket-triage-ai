@@ -1,0 +1,23 @@
+{
+    "billing_team": {
+        "team_name": "billing_team",
+        "current_queue_depth": 3,
+        "avg_wait_time_minutes": 15,
+        "agents_available": 2,
+        "agents_total": 3
+    },
+    "infra_team": {
+        "team_name": "infra_team",
+        "current_queue_depth": 8,
+        "avg_wait_time_minutes": 45,
+        "agents_available": 1,
+        "agents_total": 4
+    },
+    "product_team": {
+        "team_name": "product_team",
+        "current_queue_depth": 2,
+        "avg_wait_time_minutes": 10,
+        "agents_available": 3,
+        "agents_total": 3
+    }
+}
