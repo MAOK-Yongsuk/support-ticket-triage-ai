@@ -128,3 +128,12 @@ async def triage_ticket(ticket: TicketRequest):
             status_code=500,
             detail=f"Agent processing failed: {str(e)}",
         )
+
+
+if __name__ == "__main__":
+    import os
+    import uvicorn
+
+    host = os.getenv("API_HOST", "0.0.0.0")
+    port = int(os.getenv("API_PORT", "8000"))
+    uvicorn.run(app, host=host, port=port)

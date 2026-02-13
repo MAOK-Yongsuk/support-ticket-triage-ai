@@ -81,10 +81,18 @@ pip install -e .
 cp .env.example .env
 ```
 
-Edit `.env` and add your OpenAI API key:
+Edit `.env` and add your OpenAI API key and updated configuration:
 
-```
-OPENAI_API_KEY=sk-your-key-here
+```ini
+# OpenAI Configuration
+OPENAI_API_KEY=your-openai-api-key-here
+MODEL_NAME=gpt-4-turbo-preview
+TEMPERATURE=0.3
+MAX_TOKENS=2000
+
+# API Configuration
+API_HOST=0.0.0.0
+API_PORT=8000
 ```
 
 ## Running
@@ -100,8 +108,10 @@ This processes the 3 sample tickets from the assignment and prints triage result
 ### Option B: FastAPI Server
 
 ```bash
-uvicorn app:app --host 0.0.0.0 --port 8000
-```
+```bash
+# Runs using host/port from .env
+python app.py
+``````
 
 Then send a POST request:
 

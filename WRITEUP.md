@@ -11,13 +11,19 @@ FastAPI provides automatic OpenAPI documentation, request validation (via Pydant
 **Separation of Concerns**
 The codebase is split into clear layers:
 - `triage_agent/` — agent definition, prompt, and tools (pure AI logic)
-- `data/` — mock datasets, easily replaceable with real database queries
+- `data/` — 8 JSON files (Kb, Customers, History, Health, SLA, System, Billing, Team)
 - `app.py` / `main.py` — presentation layer (API and CLI)
 
 This separation means you can swap the data layer to use a real database, change the model, or add new tools without touching the core agent logic.
 
 **Tool Design**
-Tools are plain Python functions with detailed docstrings — ADK auto-generates the JSON schema for the LLM. Each tool is in its own file for readability and independent testability. The knowledge base search uses simple keyword scoring with tag boosting, which is transparent and debuggable.
+**Tool Design (8 Tools)**
+Tools are plain Python functions with detailed docstrings. We expanded from 2 to 8 tools to provide comprehensive context:
+1.  **Core:** `search_knowledge_base`, `lookup_customer_history`
+2.  **High-Priority:** `check_sla_status`, `search_ticket_history`, `get_customer_health_score`
+3.  **Operational:** `check_system_status`, `lookup_billing_transaction`, `get_agent_availability`
+
+Each tool loads data from a dedicated JSON file in `data/`, simulating real database/API responses. The knowledge base search uses keyword scoring with tag boosting.
 
 ## What Could Go Wrong
 

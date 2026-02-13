@@ -47,8 +47,12 @@ async def process_ticket(
             parts=[types.Part(text=user_message)],
         ),
     ):
-        if event.is_final_response() and event.content and event.content.parts:
-            agent_response = event.content.parts[0].text
+        if event.is_final_response():
+            if event.content and event.content.parts:
+                agent_response = event.content.parts[0].text
+            else:
+                 agent_response = "No response content."
+
 
     return agent_response
 

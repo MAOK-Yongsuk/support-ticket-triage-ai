@@ -1,5 +1,6 @@
 """Support Ticket Triage Agent — ADK agent definition."""
 
+import os
 from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
@@ -15,8 +16,17 @@ from triage_agent.tools import (
     search_ticket_history,
 )
 
+# Load configuration from environment
+MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4-turbo-preview")
+TEMPERATURE = float(os.getenv("TEMPERATURE", "0.3"))
+MAX_TOKENS = int(os.getenv("MAX_TOKENS", "2000"))
+
 root_agent = LlmAgent(
-    model=LiteLlm(model="openai/gpt-4o"),
+    model=LiteLlm(
+        model=f"openai/{MODEL_NAME}",
+        temperature=TEMPERATURE,
+        max_tokens=MAX_TOKENS,
+    ),
     name="support_triage_agent",
     description=(
         "An AI agent that triages incoming customer support tickets by "
