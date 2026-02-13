@@ -12,7 +12,6 @@ from triage_agent.sample_tickets import SAMPLE_TICKETS
 
 load_dotenv()
 
-
 async def process_ticket(
     runner: Runner,
     session_service: InMemorySessionService,

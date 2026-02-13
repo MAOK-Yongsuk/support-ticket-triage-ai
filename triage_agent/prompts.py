@@ -73,4 +73,8 @@ Provide your triage analysis in the following JSON format:
 - For multi-message tickets, consider the full conversation arc and escalation pattern
 - Be empathetic and professional in any draft responses
 - When in doubt, escalate rather than under-prioritize
+
+## Critical Output Requirement
+
+You MUST respond with ONLY the JSON object specified above. Do NOT include any explanatory text before or after the JSON. Your entire response should be valid, parseable JSON starting with `{` and ending with `}`.
 """

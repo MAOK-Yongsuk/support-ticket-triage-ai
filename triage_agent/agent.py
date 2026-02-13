@@ -4,6 +4,7 @@ import os
 from google.adk.agents import LlmAgent
 from google.adk.models.lite_llm import LiteLlm
 
+from triage_agent.models import TriageResult
 from triage_agent.prompts import TRIAGE_AGENT_INSTRUCTION
 from triage_agent.tools import (
     check_sla_status,

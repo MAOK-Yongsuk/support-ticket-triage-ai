@@ -32,7 +32,6 @@ class RecommendedAction(BaseModel):
         description="Brief explanation of why this action was chosen"
     )
 
-
 class TriageResult(BaseModel):
     """Complete triage analysis result for a support ticket."""
 
