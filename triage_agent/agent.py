@@ -25,16 +25,20 @@ root_agent = LlmAgent(
     ),
     instruction=TRIAGE_AGENT_INSTRUCTION,
     tools=[
-        # Core tools
-        search_knowledge_base,
+        # Context Tools
         lookup_customer_history,
-        # High-priority tools
-        check_sla_status,
         search_ticket_history,
         get_customer_health_score,
-        # Nice-to-have tools
+
+        # Knowledge Tools
+        search_knowledge_base,
+
+        # Operational Tools
         check_system_status,
         lookup_billing_transaction,
+        check_sla_status,
+
+        # Routing Tools
         get_agent_availability,
     ],
 )
