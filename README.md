@@ -103,13 +103,30 @@ MAX_TOKENS=32768
 # API Configuration
 API_HOST=0.0.0.0
 API_PORT=8000
+
+# Vector Database (ChromaDB)
+CHROMA_PERSIST_DIR=data/.chroma
+EMBEDDING_MODEL=text-embedding-3-small
 ```
+
+### 4. Populate Knowledge Base (RAG)
+
+```bash
+# Ingest KB articles into ChromaDB
+uv run python scripts/ingest_kb.py
+```
+
+This generates embeddings for all knowledge base articles and stores them in ChromaDB for semantic search.
 
 ## Running
 
 ### Option A: CLI Runner (Process Sample Tickets)
 
 ```bash
+# With uv
+uv run python main.py
+
+# Or directly
 python main.py
 ```
 
@@ -118,7 +135,10 @@ This processes the 3 sample tickets from the assignment and prints triage result
 ### Option B: FastAPI Server
 
 ```bash
-# Runs using host/port from .env
+# With uv
+uv run python app.py
+
+# Or directly
 python app.py
 ```
 
@@ -154,6 +174,10 @@ uv run pytest tests/ -v
 ### Run Agent Evaluation (requires `OPENAI_API_KEY`)
 
 ```bash
+# With uv
+uv run python -m eval.eval_runner
+
+# Or directly
 python -m eval.eval_runner
 ```
 
