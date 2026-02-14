@@ -8,7 +8,6 @@ import json
 from pathlib import Path
 from typing import Dict, List
 
-
 def search_knowledge_base(query: str) -> dict:
     """Search the knowledge base for articles relevant to a customer's issue.
 
@@ -37,7 +36,7 @@ def search_knowledge_base(query: str) -> dict:
 
 def _semantic_search(query: str) -> dict:
     """Perform semantic search using ChromaDB vector store."""
-    from triage_agent.tools.vector_store import get_vector_store
+    from .vector_store import get_vector_store
     
     # Get vector store instance
     vector_store = get_vector_store()
@@ -55,7 +54,7 @@ def _semantic_search(query: str) -> dict:
         }
     
     # Load article content from .txt files
-    kb_dir = Path(__file__).parent.parent.parent / "data" / "knowledge_base"
+    kb_dir = Path(__file__).parent.parent.parent.parent / "data" / "knowledge_base"
     articles = []
     
     for article_id, metadata, distance in zip(
@@ -91,7 +90,7 @@ def _keyword_search(query: str) -> dict:
     Used when ChromaDB is not available or fails.
     """
     # Load KB articles from JSON
-    data_dir = Path(__file__).parent.parent.parent / "data"
+    data_dir = Path(__file__).parent.parent.parent.parent / "data"
     json_file = data_dir / "knowledge_base.json"
     
     if not json_file.exists():

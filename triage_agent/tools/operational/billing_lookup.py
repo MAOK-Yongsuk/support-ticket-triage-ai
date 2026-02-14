@@ -9,7 +9,7 @@ with open(_DATA_DIR / "billing_transactions.json", encoding="utf-8") as f:
     BILLING_TRANSACTIONS = json.load(f)
 
 
-def lookup_billing_transaction(customer_id: str, amount: float = None) -> dict:
+def lookup_billing_transaction(customer_id: str, date: str = None) -> dict:
     """Look up recent billing transactions for a customer.
 
     Use this tool to investigate payment and billing issues. This helps
@@ -18,11 +18,11 @@ def lookup_billing_transaction(customer_id: str, amount: float = None) -> dict:
 
     Args:
         customer_id: The unique customer identifier (e.g., "CUST-001").
-        amount: Optional transaction amount to filter by (e.g., 29.99).
+        date: Optional transaction date to filter by (e.g., "2024-01-15").
 
     Returns:
         dict: A dictionary containing:
-            - status: "found" or "not_found"
+            - status: "success" or "not_found"
             - transactions: List of matching transactions with details
             - total_pending: Total amount in pending/authorization holds
             - total_completed: Total amount in completed transactions
@@ -33,9 +33,9 @@ def lookup_billing_transaction(customer_id: str, amount: float = None) -> dict:
         t for t in BILLING_TRANSACTIONS if t["customer_id"] == customer_id
     ]
 
-    # Further filter by amount if provided
-    if amount is not None:
-        customer_txns = [t for t in customer_txns if abs(t["amount"] - amount) < 0.01]
+    # Further filter by date if provided
+    if date is not None:
+        customer_txns = [t for t in customer_txns if t["created_at"].startswith(date)]
 
     if customer_txns:
         total_pending = sum(
@@ -46,7 +46,7 @@ def lookup_billing_transaction(customer_id: str, amount: float = None) -> dict:
         )
 
         return {
-            "status": "found",
+            "status": "success",
             "transactions": [
                 {
                     "transaction_id": t["transaction_id"],
