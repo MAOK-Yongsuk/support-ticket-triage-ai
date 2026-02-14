@@ -22,7 +22,7 @@ GOLDEN_DATASET: list[dict] = [
             "issue_type": "payment_failure",
             "sentiment": "angry",
             "action": "escalate_to_human",
-        },
+        }
     },
     # --- Ticket 2: Enterprise outage → expected CRITICAL urgency ---
     {
@@ -41,7 +41,7 @@ GOLDEN_DATASET: list[dict] = [
             "issue_type": "outage",
             "sentiment": "frustrated",
             "action": "escalate_to_human",
-        },
+        }
     },
     # --- Ticket 3: Dark mode question → expected LOW urgency ---
     {
@@ -60,7 +60,7 @@ GOLDEN_DATASET: list[dict] = [
             "issue_type": "bug",
             "sentiment": "positive",
             "action": "auto_respond",
-        },
+        }
     },
     # --- Ticket 4: API Rate Limit (Pro Customer) → expected MEDIUM urgency ---
     {
@@ -77,7 +77,7 @@ GOLDEN_DATASET: list[dict] = [
             "issue_type": "bug",
             "sentiment": "neutral",
             "action": "route_to_specialist",
-        },
+        }
     },
     # --- Ticket 5: Enterprise SLA Inquiry → expected LOW urgency ---
     {
@@ -93,55 +93,61 @@ GOLDEN_DATASET: list[dict] = [
             "issue_type": "question",
             "sentiment": "neutral",
             "action": "auto_respond",
-        },
+        }
     },
-    # --- Ticket 6: Login Issue (SSO) → expected HIGH urgency ---
+    # --- Ticket 6: Mixed Language (Thai/English) → expected HIGH urgency ---
     {
-        "ticket_id": "EVAL-006",
-        "customer_id": "CUST-002",
-        "subject": "SSO Login Failure - Multiple Users",
+        "ticket_id": "EVAL-009",
+        "customer_id": "CUST-004",
+        "subject": "Login issues / เข้าสู่ระบบไม่ได้",
         "messages": [
-            {"timestamp": "10 mins ago", "content": "All our marketing team members are unable to log in via Okta SSO. We're getting an 'Invalid Certificate' error."},
-            {"timestamp": "5 mins ago", "content": "This is affecting about 15 users right now."},
+            {"timestamp": "10 mins ago", "content": "Hello, I cannot login to my account."},
+            {"timestamp": "5 mins ago", "content": "พอกด login แล้วมันหมุนติ้วๆ ไม่ไปไหนเลยครับ (It keeps spinning when I click login)."},
+            {"timestamp": "2 mins ago", "content": "Please help urgent! ต้องรีบใช้ดึง report ครับ (Need to pull report urgently)."},
         ],
         "expected": {
             "urgency": "high",
             "product_area": "authentication",
             "issue_type": "bug",
-            "sentiment": "neutral",
+            "sentiment": "frustrated",
             "action": "escalate_to_human",
-        },
+            "language": "thai" 
+        }
     },
-    # --- Ticket 7: Refund Request (Friendly) → expected MEDIUM urgency ---
+    # --- Ticket 7: Ambiguous Urgency (High/Medium) → expected HIGH urgency ---
+    # Scenario: Pro user, significant bug but workaround exists, but deadline approaching.
     {
-        "ticket_id": "EVAL-007",
-        "customer_id": "CUST-001",
-        "subject": "Charged twice by mistake?",
+        "ticket_id": "EVAL-010",
+        "customer_id": "CUST-005",
+        "subject": "Export function crashing large files",
         "messages": [
-            {"timestamp": "1 day ago", "content": "Hi there! I think I accidentally clicked the upgrade button twice. I see two charges on my card for this month. Could you please refund one of them? Thanks!"},
+            {"timestamp": "2 hours ago", "content": "When I try to export 50k+ rows, the system crashes."},
+            {"timestamp": "1 hour ago", "content": "I can export in batches of 10k, but it's very manual and slow."},
+            {"timestamp": "30 mins ago", "content": "please fix this, I have a board meeting tomorrow morning and need the full dataset."},
         ],
         "expected": {
-            "urgency": "medium",
-            "product_area": "billing",
-            "issue_type": "payment_failure",
-            "sentiment": "positive",
-            "action": "route_to_specialist",
-        },
-    },
-    # --- Ticket 8: Feature Request (Mobile App) → expected LOW urgency ---
-    {
-        "ticket_id": "EVAL-008",
-        "customer_id": "CUST-003",
-        "subject": "Mobile App??",
-        "messages": [
-            {"timestamp": "2 days ago", "content": "Love the web version! Do you guys have an iOS app coming soon? Would be super helpful for checking stats on the go."},
-        ],
-        "expected": {
-            "urgency": "low",
+            "urgency": "high",
             "product_area": "platform",
-            "issue_type": "feature_request",
-            "sentiment": "positive",
-            "action": "auto_respond",
-        },
+            "issue_type": "bug",
+            "sentiment": "frustrated",
+            "action": "route_to_specialist", # Or escalate if wait time is high
+        }
+    },
+    # --- Ticket 8: Security Flag (Potential Incident) → expected CRITICAL urgency ---
+    {
+        "ticket_id": "EVAL-011",
+        "customer_id": "CUST-006",
+        "subject": "Suspicious login alert",
+        "messages": [
+            {"timestamp": "15 mins ago", "content": "I just got an email saying a new device logged in from Russia. I am in California. I did not authorize this."},
+            {"timestamp": "10 mins ago", "content": "I see changes in my admin settings that I didn't make!"},
+        ],
+        "expected": {
+            "urgency": "critical",
+            "product_area": "security", # Assuming 'security' map to product_area or 'platform'
+            "issue_type": "security_incident", # Or similar
+            "sentiment": "frustrated", # Or anxious/fearful -> likely mapped to frustrated/negative
+            "action": "escalate_to_human",
+        }
     },
 ]
