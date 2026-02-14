@@ -96,9 +96,9 @@ Edit `.env` and add your OpenAI API key and updated configuration:
 ```ini
 # OpenAI Configuration
 OPENAI_API_KEY=your-openai-api-key-here
-MODEL_NAME=gpt-4-turbo-preview
+MODEL_NAME=gpt-4.1
 TEMPERATURE=0.3
-MAX_TOKENS=2000
+MAX_TOKENS=32768
 
 # API Configuration
 API_HOST=0.0.0.0
@@ -118,10 +118,9 @@ This processes the 3 sample tickets from the assignment and prints triage result
 ### Option B: FastAPI Server
 
 ```bash
-```bash
 # Runs using host/port from .env
 python app.py
-``````
+```
 
 Then send a POST request:
 
