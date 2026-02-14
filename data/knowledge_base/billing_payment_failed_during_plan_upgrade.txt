@@ -1,0 +1,1 @@
+If your payment fails during a plan upgrade, please try the following: 1) Verify your card details are correct. 2) Ensure your bank is not blocking the transaction. 3) Try a different payment method. If you see duplicate pending charges, they are authorization holds and will be automatically released within 3-5 business days. Contact support if charges are not released.

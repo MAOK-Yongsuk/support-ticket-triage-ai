@@ -29,17 +29,25 @@ An AI agent that triages incoming customer support tickets — built with **Goog
 │   ├── prompts.py              # System prompt
 │   ├── models.py               # Pydantic response models
 │   ├── sample_tickets.py       # 3 sample tickets
-│   └── tools/                  # Tool definitions
-│       ├── knowledge_base.py   # Search KB tool
-│       ├── customer_history.py # Customer lookup tool
-│       ├── sla_status.py       # SLA checker
-│       ├── ticket_history.py   # Similarity search
-│       ├── health_score.py     # Churn risk calculator
-│       ├── system_status.py    # Incident checker
-│       ├── billing_lookup.py   # Transaction finder
-│       └── agent_availability.py # Queue depth checker
-├── data/                       # Mock datasets (JSON)
-│   ├── knowledge_base.json     # 9 FAQ/doc articles
+│   └── tools/                  # Tool definitions (organized by category)
+│       ├── context/            # Customer & ticket context
+│       │   ├── customer_history.py
+│       │   ├── ticket_history.py
+│       │   ├── health_score.py
+│       │   └── sla_status.py
+│       ├── search/             # Knowledge retrieval (RAG)
+│       │   ├── knowledge_base.py
+│       │   └── vector_store.py
+│       ├── operational/        # System & billing
+│       │   ├── system_status.py
+│       │   └── billing_lookup.py
+│       └── routing/            # Team management
+│           └── agent_availability.py
+├── data/                       # Mock datasets
+│   ├── knowledge_base/         # 9 KB articles (.txt)
+│   │   ├── billing_*.txt
+│   │   ├── system_*.txt
+│   │   └── features_*.txt
 │   ├── customers.json          # Customer records
 │   ├── ticket_history.json     # Historical tickets
 │   ├── health_metrics.json     # Churn risk data
@@ -47,6 +55,8 @@ An AI agent that triages incoming customer support tickets — built with **Goog
 │   ├── system_status.json      # Regional incidents
 │   ├── billing_transactions.json # Payment logs
 │   └── agent_availability.json # Team queue stats
+├── scripts/                    # Utility scripts
+│   └── ingest_kb.py            # Populate ChromaDB with KB articles
 ├── tests/                      # Unit tests
 │   ├── test_knowledge_base.py  # KB search tool tests
 │   └── test_customer_history.py# Customer lookup tests

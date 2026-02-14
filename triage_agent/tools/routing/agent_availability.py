@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 # Load agent availability from JSON
-_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+_DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 with open(_DATA_DIR / "agent_availability.json", encoding="utf-8") as f:
     AGENT_AVAILABILITY = json.load(f)
 

@@ -1,0 +1,1 @@
+Pro plan includes: Advanced export formats (PDF, XLSX, CSV), Dark mode and custom themes, Priority email support, API access (1000 requests/day), Team collaboration (up to 10 users), Custom integrations. Upgrade at Settings > Billing > Change Plan.

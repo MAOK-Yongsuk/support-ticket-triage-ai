@@ -11,7 +11,7 @@ FastAPI provides automatic OpenAPI documentation, request validation (via Pydant
 **Separation of Concerns**
 The codebase is split into clear layers:
 - `triage_agent/` — agent definition, prompt, and tools (pure AI logic)
-- `data/` — 8 JSON files (Kb, Customers, History, Health, SLA, System, Billing, Team)
+- `data/` — JSON datasets (Customers, History, etc.) + TXT files for Knowledge Base
 - `app.py` / `main.py` — presentation layer (API and CLI)
 
 This separation means you can swap the data layer to use a real database, change the model, or add new tools without touching the core agent logic.

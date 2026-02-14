@@ -1,0 +1,1 @@
+Error 500 indicates a server-side issue. Steps to try: 1) Clear browser cache and cookies. 2) Try a different browser. 3) Check status.company.com for known outages. 4) If the issue persists across multiple users, it may be a regional outage. Contact support with your region information and the number of affected users.

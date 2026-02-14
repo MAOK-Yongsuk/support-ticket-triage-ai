@@ -1,0 +1,1 @@
+If multiple users in your organization cannot access the system: 1) Check if the issue is network-specific (try mobile data). 2) Verify your organization's SSO/SAML configuration. 3) Check if your enterprise license seats are fully assigned. 4) Contact support for enterprise-level access issues — these are treated as high-priority.

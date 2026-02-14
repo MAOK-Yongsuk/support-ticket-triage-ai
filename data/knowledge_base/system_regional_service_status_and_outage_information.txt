@@ -1,0 +1,1 @@
+Our service operates across multiple regions: US, EU, and Asia. Each region has independent infrastructure. Regional outages may not appear on the global status page (status.company.com). If you experience issues specific to your region, please contact support with: your region, number of affected users, and error messages. Enterprise customers receive priority incident response.

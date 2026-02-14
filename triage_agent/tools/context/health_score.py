@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 # Load health metrics from JSON
-_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+_DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 with open(_DATA_DIR / "health_metrics.json", encoding="utf-8") as f:
     HEALTH_METRICS = json.load(f)
 

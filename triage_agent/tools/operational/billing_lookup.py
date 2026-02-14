@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 # Load billing transactions from JSON
-_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+_DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 with open(_DATA_DIR / "billing_transactions.json", encoding="utf-8") as f:
     BILLING_TRANSACTIONS = json.load(f)
 

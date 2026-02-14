@@ -1,0 +1,1 @@
+We welcome feature requests! Submit them at feedback.company.com. Our current roadmap includes: scheduled dark mode, mobile app improvements, and enhanced API features. Feature requests are reviewed monthly and prioritized by user demand.

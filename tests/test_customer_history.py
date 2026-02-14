@@ -1,6 +1,6 @@
 """Tests for customer history lookup tool."""
 
-from triage_agent.tools.customer_history import lookup_customer_history
+from triage_agent.tools.context.customer_history import lookup_customer_history
 
 
 class TestLookupCustomerHistory:

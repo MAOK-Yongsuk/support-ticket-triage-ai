@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 # Load ticket history from JSON
-_DATA_DIR = Path(__file__).parent.parent.parent / "data"
+_DATA_DIR = Path(__file__).parent.parent.parent.parent / "data"
 with open(_DATA_DIR / "ticket_history.json", encoding="utf-8") as f:
     TICKET_HISTORY = json.load(f)
 

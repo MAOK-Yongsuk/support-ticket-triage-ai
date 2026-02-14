@@ -27,3 +27,9 @@ uv.lock
 
 # Google ADK
 .adk/
+
+# ChromaDB
+data/.chroma/
+
+# pytest
+.pytest_cache/

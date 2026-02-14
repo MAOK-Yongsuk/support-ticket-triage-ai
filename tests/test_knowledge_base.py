@@ -1,6 +1,6 @@
 """Tests for knowledge base search tool."""
 
-from triage_agent.tools.knowledge_base import search_knowledge_base
+from triage_agent.tools.search.knowledge_base import search_knowledge_base
 
 
 class TestSearchKnowledgeBase:
