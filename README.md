@@ -1,6 +1,6 @@
 # Support Ticket Triage Agent
 
-An AI agent that triages incoming customer support tickets — built with **Google ADK**, **FastAPI**, and **OpenAI GPT-4o** (via LiteLLM).
+An AI agent that triages incoming customer support tickets — built with **Google ADK**, **FastAPI**, and **OpenAI GPT-4** (via LiteLLM).
 
 ## What It Does
 
