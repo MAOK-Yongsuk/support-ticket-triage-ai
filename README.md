@@ -142,7 +142,10 @@ uv run python app.py
 python app.py
 ```
 
-Then send a POST request:
+Then access the interactive API documentation:
+- **Swagger UI**: http://localhost:8000/docs
+
+Or send a POST request:
 
 ```bash
 curl -X POST http://localhost:8000/triage \
@@ -186,6 +189,7 @@ python -m eval.eval_runner
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/health` | Health check |
+| `GET` | `/docs` | Interactive API documentation (Swagger UI) |
 | `POST` | `/triage` | Process a support ticket |
 
 ## Tech Stack
