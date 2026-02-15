@@ -8,33 +8,33 @@ I chose Google ADK as the agent framework because it provides a clean, opinionat
 **FastAPI as the API Layer**
 FastAPI provides automatic OpenAPI documentation, request validation (via Pydantic), and async support — ideal for wrapping an async ADK agent. The API is intentionally minimal (`POST /triage` + `GET /health`) to stay focused on the core triage logic.
 
-**Separation of Concerns**
+**Separation of Concerns & Modular Design**
 The codebase is split into clear layers:
 - `triage_agent/` — agent definition, prompt, and tools (pure AI logic)
+  - `tools/` — Reorganized into logical subdirectories: `context`, `search`, `operational`, `routing`
 - `data/` — JSON datasets (Customers, History, etc.) + TXT files for Knowledge Base
 - `app.py` / `main.py` — presentation layer (API and CLI)
 
 This separation means you can swap the data layer to use a real database, change the model, or add new tools without touching the core agent logic.
 
-**Tool Design**
 **Tool Design (8 Tools)**
-Tools are plain Python functions with detailed docstrings. We expanded from 2 to 8 tools to provide comprehensive context:
-1.  **Core:** `search_knowledge_base`, `lookup_customer_history`
-2.  **High-Priority:** `check_sla_status`, `search_ticket_history`, `get_customer_health_score`
-3.  **Operational:** `check_system_status`, `lookup_billing_transaction`, `get_agent_availability`
+Tools are plain Python functions with detailed docstrings, now organized by domain:
+1.  **Context:** `lookup_customer_history`, `search_ticket_history`, `get_customer_health_score`, `check_sla_status`
+2.  **Search (RAG):** `search_knowledge_base` using ChromaDB + OpenAI Embeddings
+3.  **Operational:** `check_system_status`, `lookup_billing_transaction`
+4.  **Routing:** `get_agent_availability`
 
-Each tool loads data from a dedicated JSON file in `data/`, simulating real database/API responses. The knowledge base search uses keyword scoring with tag boosting.
+We migrated the Knowledge Base from a simple JSON file to a **RAG (Retrieval-Augmented Generation)** system using ChromaDB. This allows for semantic search ("payment failed" finds "Billing Issues"), significantly improving relevance over the previous keyword-based approach. Other tools load data from dedicated JSON files in `data/`, simulating real database/API responses.
 
 ## What Could Go Wrong
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
 | **LLM hallucination** | Agent invents customer data or KB articles | Tools return real data; prompt instructs agent to rely on tool outputs, not assumptions |
-| **Token limit exceeded** | Long ticket threads could exceed context window | Truncate/summarize older messages before sending; monitor token usage |
-| **Tool call failures** | Agent skips tools or calls with wrong parameters | System prompt explicitly requires both tool calls; validate tool outputs before using |
-| **Non-English input** | LLM may misinterpret non-English text | GPT-4o handles multilingual well; prompt instructs to note detected language |
-| **Prompt injection** | Malicious ticket content manipulates the agent | Separate system prompt from user content; input sanitization in production |
-| **Latency** | Multiple tool calls + LLM round-trips add latency | Cache frequent KB queries; use async processing; consider streaming responses |
+| **Semantic Drift** | RAG retrieves irrelevant articles | Tune chunking strategy and embedding model; fallback to keyword search (implemented) |
+| **Token limit exceeded** | Long ticket threads/KB articles could exceed context | Truncate/summarize older messages; retrieved KB articles are top-k only |
+| **Tool call failures** | Agent skips tools or calls with wrong parameters | System prompt requires tool calls; Pydantic validation catches schema errors |
+| **Dependency Risks** | External services (OpenAI, ChromaDB) downtime | Implement retries and fallbacks (e.g., keyword search if vector DB fails) |
 
 ## How I'd Evaluate This Agent in Production
 
@@ -50,6 +50,12 @@ Each tool loads data from a dedicated JSON file in `data/`, simulating real data
 - **Customer satisfaction** — For auto-responded tickets, measure CSAT and resolution rate
 
 **Continuous Improvement:**
-- A/B test prompt variations to optimize accuracy
-- Expand the knowledge base based on common escalation topics
-- Add new tools as needed (e.g., SLA checker, billing system integration)
+- **LLM-as-a-Judge:** Use a stronger model (e.g., GPT-5) to evaluate the triage decisions of smaller/faster models on complexity, empathy, and correctness.
+- **A/B Testing:** comparison of prompt variations or RAG retrieval strategies (k=3 vs k=5).
+- **Feedback Loop:** Automatically flag tickets where the human agent's resolution differed significantly from the AI's triage.
+
+**Production Monitoring & Optimization:**
+- **Continuous Evaluation:** Instead of a one-time test, evaluate agent logs in real-time or daily batches to identify when accuracy drifts.
+- **Performance Tracking:** Compare current agent versions against baselines (e.g., previous versions) to ensure updates do not cause regression.
+- **Live Alerts:** Set up monitoring for high latency (slow responses) or high error rates in tool calls, triggering automated alerts to the engineering team.
+- **Adversarial Testing:** Intentionally putting the agent into challenging, edge-case scenarios to test its robustness against prompt injection or confusing inputs.
